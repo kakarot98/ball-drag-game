@@ -8,7 +8,7 @@ public class ObstacleSpawner : MonoBehaviour
     GameObject obstaclePrefab;
 
     [SerializeField]
-    private float obstacleHeight = 0.5f, obstacleWidth = 2f;
+    private float obstacleHeight = 1f, obstacleWidth = 2f;
     int index = 0;
 
     [SerializeField]
@@ -17,6 +17,8 @@ public class ObstacleSpawner : MonoBehaviour
     public static ObstacleSpawner instance = null;
 
     List<GameObject> obstacleList = new List<GameObject>();
+
+    float hue;
 
 
     void Start()
@@ -30,6 +32,12 @@ public class ObstacleSpawner : MonoBehaviour
         for(int i = 0; i < 5; i++) {
             CreateObstacle();
         }
+        SetBackgroundColor();
+    }
+
+    void SetBackgroundColor() {
+        hue = Random.Range(0f, 1f);
+        Camera.main.backgroundColor = Color.HSVToRGB(hue, 0.6f, 0.8f);
     }
 
     void AddObstaclesToList() {
@@ -66,11 +74,30 @@ public class ObstacleSpawner : MonoBehaviour
         //Instead of creating many obstacles and delting, create 5 in a list, set them active and deactivate them accordingly
 
         GameObject obstacle = GetObstacle();
+        SetColorOfObstacle(obstacle);
         obstacle.SetActive(true);
+        
         obstacle.transform.position = newPosition;
         obstacle.transform.rotation = Quaternion.identity;        
         obstacle.transform.SetParent(transform);
-        obstacle.transform.localScale = new Vector2(obstacleWidth, obstacleHeight);
+        obstacle.transform.localScale = new Vector2(obstacleWidth, obstacleHeight);        
         index++;
+    }
+
+
+    void SetColorOfObstacle(GameObject obstacle) {
+
+        if (Random.Range(0, 3) != 0) {
+
+            hue += 0.11f;
+            if (hue >= 1) {
+                hue -= 1f;
+            }
+
+            obstacle.GetComponent<SpriteRenderer>().color = Color.HSVToRGB(hue,0.6f,0.8f);
+        }
+
+        
+
     }
 }
