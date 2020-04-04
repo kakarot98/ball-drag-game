@@ -25,23 +25,28 @@ public class ObstacleSpawner : MonoBehaviour
     {
         AddObstaclesToList();
 
-        if (instance == null) {
+        if (instance == null)
+        {
             instance = this;
         }
 
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++)
+        {
             CreateObstacle();
         }
         SetBackgroundColor();
     }
 
-    void SetBackgroundColor() {
+    void SetBackgroundColor()
+    {
         hue = Random.Range(0f, 1f);
         Camera.main.backgroundColor = Color.HSVToRGB(hue, 0.6f, 0.8f);
     }
 
-    void AddObstaclesToList() {
-        for (int i = 0; i < 5; i++) {
+    void AddObstaclesToList()
+    {
+        for (int i = 0; i < 5; i++)
+        {
             GameObject obstacleToAdd = Instantiate(obstaclePrefab);
             obstacleToAdd.SetActive(false);
             obstacleList.Add(obstacleToAdd);
@@ -49,10 +54,13 @@ public class ObstacleSpawner : MonoBehaviour
     }
 
 
-    GameObject GetObstacle() {
+    GameObject GetObstacle()
+    {
         GameObject obstacleToBeActive;
-        for (int i = 0; i < obstacleList.Count; i++) {
-            if (!obstacleList[i].activeInHierarchy) {
+        for (int i = 0; i < obstacleList.Count; i++)
+        {
+            if (!obstacleList[i].activeInHierarchy)
+            {
                 obstacleToBeActive = obstacleList[i];
                 return obstacleToBeActive;
             }
@@ -60,12 +68,15 @@ public class ObstacleSpawner : MonoBehaviour
         return null;
     }
 
-    public void CreateObstacle() {
+    public void CreateObstacle()
+    {
         int randomPositionX;
-        if (index == 0) {
+        if (index == 0)
+        {
             randomPositionX = 0;
         }
-        else {
+        else
+        {
             randomPositionX = Random.Range(minX, maxX);
         }
         Vector2 newPosition = new Vector2(randomPositionX, index * 5);
@@ -85,19 +96,18 @@ public class ObstacleSpawner : MonoBehaviour
     }
 
 
-    void SetColorOfObstacle(GameObject obstacle) {
+    void SetColorOfObstacle(GameObject obstacle)
+    {
 
-        if (Random.Range(0, 3) != 0) {
+        if (Random.Range(0, 3) != 0)
+        {
 
             hue += 0.11f;
-            if (hue >= 1) {
+            if (hue >= 1)
+            {
                 hue -= 1f;
             }
-
             obstacle.GetComponent<SpriteRenderer>().color = Color.HSVToRGB(hue,0.6f,0.8f);
         }
-
-        
-
     }
 }

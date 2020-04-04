@@ -21,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-
+    
+    //this method gets triggered when player collides with other rigidbodies
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Obstacle"))
@@ -41,25 +42,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void LandOnObstacleEffect()
-    {
 
-        
+    //to play LandingEffect animation 
+    private void LandOnObstacleEffect()
+    {        
         Destroy(Instantiate(landEffect, transform.position, Quaternion.identity),0.5f);
     }
 
-    void DestroyAndCreate(Collider2D obstacle) {
-        //Destroy(obstacle.gameObject);         //This would take up a lot of cpu power
+
+    //this method is used to set active true or false for obstacle prefabs. called in OnTriggerEnter2D()
+    void DestroyAndCreate(Collider2D obstacle)
+    {
+        //Destroy(obstacle.gameObject);         //creating and destroying assets takes up lot of cpu power in mobiles hence actiavte or deactivate them instead
         obstacle.gameObject.SetActive(false);
         ObstacleSpawner.instance.CreateObstacle();
     }
 
 
+    //to keep the player moving in y-axis with consistent velocity. called in update() 
     void AdddGravity()
     {
         rb.velocity = new Vector2(0, rb.velocity.y - (grav * grav));
     }
 
+    //updates on every frame
     void Update()
     {
         AdddGravity();
@@ -68,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         CheckPlayerDeadAndRestart();
     }
 
+    //this method is to move the player corresponding to the distance with which the mouse pointer would move
     private void MovePlayer()
     {
         if (isDragging)
@@ -85,12 +92,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //check when mousebutton is clicked
     private void GetInput()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            isDragging = true;
-            mouseStartPos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+            isDragging = true; //true unti mousebutton is lifted
+            mouseStartPos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y)); //the position where the mousebutton is clicked first
             playerPos = transform.position;
         }
         else if (Input.GetMouseButtonUp(0))
@@ -101,7 +109,8 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckPlayerDeadAndRestart()
     {
-        if (transform.position.y < Camera.main.transform.position.y - 15) {
+        if (transform.position.y < Camera.main.transform.position.y - 15)
+        {
             //Debug.Log("Player is out of screen now");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
