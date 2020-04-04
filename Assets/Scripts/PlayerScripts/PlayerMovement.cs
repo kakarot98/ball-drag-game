@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumpForce = grav * jumpHeight;
                 rb.velocity = new Vector2(0f, jumpForce);
+                ScoreManager.instance.IncreaseScore();
                 Camera.main.backgroundColor = other.gameObject.GetComponent<SpriteRenderer>().color;
                 DestroyAndCreate(other);
                 grav += 0.01f;
@@ -101,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     void CheckPlayerDeadAndRestart()
     {
         if (transform.position.y < Camera.main.transform.position.y - 15) {
-            Debug.Log("Player is out of screen now");
+            //Debug.Log("Player is out of screen now");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

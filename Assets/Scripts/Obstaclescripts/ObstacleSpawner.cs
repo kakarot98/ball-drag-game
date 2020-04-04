@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject obstaclePrefab;
+    GameObject obstaclePrefab = default;
 
     [SerializeField]
     private float obstacleHeight = 1f, obstacleWidth = 2f;
