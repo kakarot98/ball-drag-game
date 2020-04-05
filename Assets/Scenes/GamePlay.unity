@@ -432,7 +432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1339586898}
   smoothTime: 0.3
-  yOffset: 0
+  yOffset: 3
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &995941809
 RectTransform:
@@ -1263,6 +1263,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5549338703391362905, guid: 533a3e963c3abfb44a6efabd9cd339e0,
+        type: 3}
+      propertyPath: smoothTime
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 533a3e963c3abfb44a6efabd9cd339e0, type: 3}

@@ -45,7 +45,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void AddObstaclesToList()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 3; i++)
         {
             GameObject obstacleToAdd = Instantiate(obstaclePrefab);
             obstacleToAdd.SetActive(false);
@@ -80,17 +80,19 @@ public class ObstacleSpawner : MonoBehaviour
             randomPositionX = Random.Range(minX, maxX);
         }
         Vector2 newPosition = new Vector2(randomPositionX, index * 5);
-
         //GameObject obstacle = Instantiate(obstaclePrefab, newPosition, Quaternion.identity);
         //Instead of creating many obstacles and delting, create 5 in a list, set them active and deactivate them accordingly
-
         GameObject obstacle = GetObstacle();
         SetColorOfObstacle(obstacle);
-        obstacle.SetActive(true);
-        
+        if (obstacle == null)
+        {
+            return;
+        }
+        obstacle.SetActive(true);        
         obstacle.transform.position = newPosition;
         obstacle.transform.rotation = Quaternion.identity;        
         obstacle.transform.SetParent(transform);
+        obstacle.GetComponent<ObstacleMovement>().ChangePositionObstacle();
         obstacle.transform.localScale = new Vector2(obstacleWidth, obstacleHeight);        
         index++;
     }
@@ -106,6 +108,9 @@ public class ObstacleSpawner : MonoBehaviour
             if (hue >= 1)
             {
                 hue -= 1f;
+            }
+            if (obstacle == null) {
+                return;
             }
             obstacle.GetComponent<SpriteRenderer>().color = Color.HSVToRGB(hue,0.6f,0.8f);
         }
