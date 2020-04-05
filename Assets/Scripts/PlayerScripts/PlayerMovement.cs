@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         if (transform.position.y < Camera.main.transform.position.y - 15)
         {
             //Debug.Log("Player is out of screen now");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.instance.GameOver();
         }
     }
 }

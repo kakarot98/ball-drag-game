@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     private TextMeshProUGUI currentScoreValueText = default, bestScoreValueText = default;
     public static ScoreManager instance = null; //to call this script in playermovement.cs
 
-    int currentScoreValue;
+    public int currentScoreValue;
 
     void Start()
     {
