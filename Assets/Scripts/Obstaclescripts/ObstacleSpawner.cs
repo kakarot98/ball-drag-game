@@ -19,6 +19,7 @@ public class ObstacleSpawner : MonoBehaviour
     List<GameObject> obstacleList = new List<GameObject>();
 
     float hue;
+    bool firstObstacle = true;
 
 
     void Start()
@@ -30,6 +31,9 @@ public class ObstacleSpawner : MonoBehaviour
             instance = this;
         }
 
+        if (firstObstacle) {
+            CreateObstacleWithoutMovement();
+        }
         for (int i = 0; i < 5; i++)
         {
             CreateObstacle();
@@ -95,6 +99,35 @@ public class ObstacleSpawner : MonoBehaviour
         obstacle.GetComponent<ObstacleMovement>().ChangePositionObstacle();
         obstacle.transform.localScale = new Vector2(obstacleWidth, obstacleHeight);        
         index++;
+    }
+
+    public void CreateObstacleWithoutMovement() {
+        int randomPositionX;
+        if (index == 0)
+        {
+            randomPositionX = 0;
+        }
+        else
+        {
+            randomPositionX = Random.Range(minX, maxX);
+        }
+        Vector2 newPosition = new Vector2(randomPositionX, index * 5);
+        //GameObject obstacle = Instantiate(obstaclePrefab, newPosition, Quaternion.identity);
+        //Instead of creating many obstacles and delting, create 5 in a list, set them active and deactivate them accordingly
+        GameObject obstacle = GetObstacle();
+        SetColorOfObstacle(obstacle);
+        if (obstacle == null)
+        {
+            return;
+        }
+        obstacle.SetActive(true);
+        obstacle.transform.position = newPosition;
+        obstacle.transform.rotation = Quaternion.identity;
+        obstacle.transform.SetParent(transform);
+        //obstacle.GetComponent<ObstacleMovement>().ChangePositionObstacle();
+        obstacle.transform.localScale = new Vector2(obstacleWidth, obstacleHeight);
+        index++;
+        firstObstacle = false;
     }
 
 

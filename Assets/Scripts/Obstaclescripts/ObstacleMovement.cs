@@ -37,7 +37,19 @@ public class ObstacleMovement : MonoBehaviour
     {
         if (Vector2.Distance(targetPositionObstacle, transform.position) > 0.01f) {
             //MovetoTargetPosition();
-            transform.position = Vector2.MoveTowards(transform.position, targetPositionObstacle, 25 * Time.deltaTime);
+            int toSetMotionSpeed = UnityEngine.Random.Range(0, 3);
+            if (toSetMotionSpeed == 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPositionObstacle, 10 * Time.deltaTime);
+            }
+            else if (toSetMotionSpeed == 1)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPositionObstacle, 15 * Time.deltaTime);
+            }
+            else if (toSetMotionSpeed == 2) {
+                transform.position = Vector2.MoveTowards(transform.position, targetPositionObstacle, 20 * Time.deltaTime);
+            }
+            //transform.position = Vector2.MoveTowards(transform.position, targetPositionObstacle, 15 * Time.deltaTime);
         }
     }
 
