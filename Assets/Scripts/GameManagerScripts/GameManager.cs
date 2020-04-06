@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +15,13 @@ public class GameManager : MonoBehaviour
     TextMeshProUGUI endScoreValueText, endBestScoreValueText;
 
     public static GameManager instance = null;
+    public GameObject Player;
+
+
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
 
     private void Start()
     {
@@ -22,11 +29,25 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
-
+        
     public void GameOver() {
+        StartCoroutine(GameOverCoroutine());
+    }
+
+    
+
+    IEnumerator GameOverCoroutine()
+    {
+        Time.timeScale = 0.1f;
+        yield return new WaitForSecondsRealtime(1f);
+
         gameOverPanel.SetActive(true);
         endScoreValueText.text = ScoreManager.instance.currentScoreValue.ToString();
         endBestScoreValueText.text = PlayerPrefs.GetInt("Best").ToString();
+
+        Player.SetActive(false);
+
+        yield break;
     }
 
     public void RestartGame() {

@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     public float leftBound, rightBound;
 
     public GameObject landEffect;
+    public GameObject deathEffect;
+
+    bool isDead = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -68,6 +71,9 @@ public class PlayerMovement : MonoBehaviour
     //updates on every frame
     void Update()
     {
+        if (isDead) {
+            return;
+        }
         AdddGravity();
         GetInput();
         MovePlayer();
@@ -109,8 +115,12 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckPlayerDeadAndRestart()
     {
-        if (transform.position.y < Camera.main.transform.position.y - 15)
+        if (!isDead && transform.position.y < Camera.main.transform.position.y - 10)
         {
+            isDead = true;
+            rb.velocity = Vector2.zero;
+            Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 1f);
+            
             //Debug.Log("Player is out of screen now");
             GameManager.instance.GameOver();
         }

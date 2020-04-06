@@ -475,8 +475,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1571,10 +1571,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1062011803}
-    characterCount: 11
+    characterCount: 15
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1769,6 +1769,8 @@ MonoBehaviour:
   leftBound: -5.2
   rightBound: 5.2
   landEffect: {fileID: 3162707498238316268, guid: 2ad6d13a3bb58bf4aaf8c9245273f651,
+    type: 3}
+  deathEffect: {fileID: 5696192106975955819, guid: af2950fe1c5ac7d498f83ce15263c03f,
     type: 3}
 --- !u!50 &1339586900
 Rigidbody2D:
@@ -2293,6 +2295,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1714943127}
   endScoreValueText: {fileID: 852995227}
   endBestScoreValueText: {fileID: 1727821305}
+  Player: {fileID: 1339586898}
 --- !u!1 &2113738025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,82 +2451,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113738025}
   m_CullTransparentMesh: 0
---- !u!1001 &2428509461007084975
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4725576668633507954, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507954, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4725576668633507957, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5549338703391362905, guid: 533a3e963c3abfb44a6efabd9cd339e0,
-        type: 3}
-      propertyPath: smoothTime
-      value: 0.01
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 533a3e963c3abfb44a6efabd9cd339e0, type: 3}
