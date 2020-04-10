@@ -9,10 +9,10 @@ using System;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject gameOverPanel;
+    GameObject gameOverPanel = default;
 
     [SerializeField]
-    TextMeshProUGUI endScoreValueText, endBestScoreValueText;
+    TextMeshProUGUI endScoreValueText = default, endBestScoreValueText = default;
 
     public static GameManager instance = null;
     public GameObject Player;
@@ -52,5 +52,9 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void BackToMainMenu() {
+        SceneManager.LoadScene(0);
     }
 }
