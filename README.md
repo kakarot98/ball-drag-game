@@ -5,5 +5,7 @@ Followed a basic tutorial for this game with some of my own additions and change
 
 ![](https://github.com/kakarot98/ball-drag-game/blob/master/Gameplay.gif)    ![](https://github.com/kakarot98/ball-drag-game/blob/master/Gameplay2.gif)
 
-Updated Game:![](https://github.com/kakarot98/ball-drag-game/blob/master/Gameplay3.gif)
+Updated Game:
+
+![](https://github.com/kakarot98/ball-drag-game/blob/master/Gameplay3.gif)
 
